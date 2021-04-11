@@ -1,14 +1,13 @@
 package com.krglow;
 
 public class Calendar {
-	
+
 	private String startWork;
 	private String endWork;
 
 	private PlannedMeeting[] meetings;
 
 	public Calendar(String startWork, String endWork, PlannedMeeting[] meetings) {
-		super();
 		this.startWork = startWork;
 		this.endWork = endWork;
 		this.meetings = meetings;
@@ -37,10 +36,5 @@ public class Calendar {
 	public void setMeetings(PlannedMeeting[] meetings) {
 		this.meetings = meetings;
 	}
-	
-	
-	
-	
-	
-	
+
 }
