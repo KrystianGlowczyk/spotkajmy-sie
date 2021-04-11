@@ -3,6 +3,8 @@ package com.krglow;
 public class Main {
 
 	public static void main(String[] args) {
+		
+		var meetingDuration = 30;
 
 		PlannedMeeting[] plans_1 = {
 				new PlannedMeeting("09:00", "10:30"),
@@ -20,10 +22,10 @@ public class Main {
 		var calendar1 = new Calendar("09:00", "19:55", plans_1);
 		var calendar2 = new Calendar("10:00", "18:30", plans_2);
 
-		var freeTimes = PossibleMeetings.findFreeTime(calendar1);
-		var freeTimes2 = PossibleMeetings.findFreeTime(calendar2);
+		var freeTimes = PossibleMeetings.findFreeTime(calendar1, meetingDuration);
+		var freeTimes2 = PossibleMeetings.findFreeTime(calendar2, meetingDuration);
 
-		PossibleMeetings.availableTime(freeTimes, freeTimes2);
+		PossibleMeetings.availableTime(freeTimes, freeTimes2, meetingDuration);
 
 	}
 

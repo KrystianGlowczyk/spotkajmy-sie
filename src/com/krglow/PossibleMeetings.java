@@ -6,9 +6,7 @@ import java.util.List;
 
 public class PossibleMeetings {
 
-	public static List<PlannedMeeting> findFreeTime(Calendar calendar) {
-
-		var meetingDuration = 30;
+	public static List<PlannedMeeting> findFreeTime(Calendar calendar, int meetingDuration) {
 
 		var start = LocalTime.parse(calendar.getstartWork());
 		var end = LocalTime.parse(calendar.getendWork());
@@ -58,7 +56,7 @@ public class PossibleMeetings {
 
 	}
 
-	public static List<PlannedMeeting> availableTime(List<PlannedMeeting> list_1, List<PlannedMeeting> list_2) {
+	public static List<PlannedMeeting> availableTime(List<PlannedMeeting> list_1, List<PlannedMeeting> list_2, int meetingDuration) {
 
 		var avaliableTime = new ArrayList<PlannedMeeting>();
 
@@ -74,13 +72,13 @@ public class PossibleMeetings {
 			}
 		}
 		//System.out.println(avaliableTime);
-		PossibleMeetings.checkTheNeigbor(avaliableTime);
+		PossibleMeetings.checkTheNeigbor(avaliableTime, meetingDuration);
 		System.out.println(avaliableTime);
 
 		return avaliableTime;
 	}
 
-	public static List<PlannedMeeting> checkTheNeigbor(List<PlannedMeeting> list) {
+	public static List<PlannedMeeting> checkTheNeigbor(List<PlannedMeeting> list, int meetingDuration) {
 
 		for (var i = 0; i < list.size(); i++) {
 
@@ -91,7 +89,7 @@ public class PossibleMeetings {
 				var time1 = LocalTime.parse(element_1.getstartTime());
 				var time2 = LocalTime.parse(element_2.getstartTime());
 
-				if (time1.minusMinutes(30) == time2 || time2.minusMinutes(30) == time1) {
+				if (time1.minusMinutes(meetingDuration) == time2 || time2.minusMinutes(meetingDuration) == time1) {
 					element_1.setendTime(element_2.getendTime());
 					list.remove(element_2);
 				}
